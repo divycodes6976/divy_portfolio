@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { useHoverStore } from "../providers/counter-store-provider";
 
@@ -25,12 +26,19 @@ export default function OPodsContainer() {
 
   return (
     <motion.div className="w-full lg:w-[50%] relative border-2 border-foreground overflow-hidden" onMouseEnter={() => setIsHovered("opods")} onMouseLeave={() => setIsHovered("none")}>
-      <Link target="_blank" href="https://inteview-prep-ai.vercel.app/" className="block relative w-full h-full aspect-video">
+      <Link target="_blank" href="https://inteview-prep-ai.vercel.app/" className="block relative w-full h-full">
+        <Image
+          className={`w-full select-none relative z-20 transition-all duration-300 ${
+            isHovered === "opods" ? "opacity-0 saturate-100" : "opacity-100 saturate-0"
+          }`}
+          src="/images/interview-prepai.png"
+          width={1280}
+          height={720}
+          alt="InterviewPrep AI - AI-powered Mock Interview Platform"
+        />
         <video
           ref={videoRef}
-          className={`w-full h-full object-cover select-none transition-all duration-300 ${
-            isHovered === "opods" ? "saturate-100" : "saturate-0"
-          }`}
+          className="absolute inset-0 z-10 w-full h-full object-cover select-none"
           src="/videos/interview-prepai.mp4"
           autoPlay
           loop
