@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
@@ -8,19 +8,24 @@ import { useHoverStore } from "../providers/counter-store-provider";
 
 export default function OPodsContainer() {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
   const isHovered = useHoverStore((state) => state.isHovered);
   const setIsHovered = useHoverStore((state) => state.setIsHovered);
 
   useEffect(() => {
-    if (!videoRef || !videoRef.current) return;
+    const video = videoRef.current;
+    if (!video) return;
 
-    if (videoRef.current) {
-      if (isHovered === "opods") {
-        videoRef.current.currentTime = 0;
-        videoRef.current.play();
-      } else {
-        videoRef.current.pause();
+    if (isHovered === "opods") {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.warn("InterviewPrep AI video play error:", err);
+        });
       }
+    } else {
+      video.pause();
+      setIsPlaying(false);
     }
   }, [isHovered]);
 
@@ -29,8 +34,8 @@ export default function OPodsContainer() {
       <Link target="_blank" href="https://inteview-prep-ai.vercel.app/" className="block relative w-full h-full">
         <Image
           className={`w-full select-none relative z-20 transition-all duration-300 ${
-            isHovered === "opods" ? "opacity-0 saturate-100" : "opacity-100 saturate-0"
-          }`}
+            isHovered === "opods" && isPlaying ? "opacity-0" : "opacity-100"
+          } ${isHovered === "opods" ? "saturate-100" : "saturate-0"}`}
           src="/images/interview-prepai.png"
           width={1280}
           height={720}
@@ -40,11 +45,11 @@ export default function OPodsContainer() {
           ref={videoRef}
           className="absolute inset-0 z-10 w-full h-full object-cover select-none"
           src="/videos/interview-prepai.mp4"
-          autoPlay
           loop
           muted
           playsInline
           preload="auto"
+          onPlaying={() => setIsPlaying(true)}
           aria-label="A video showcasing InterviewPrep AI"
         />
         <div className="h-full flex flex-row-reverse justify-between absolute inset-0 z-30 pointer-events-none">
