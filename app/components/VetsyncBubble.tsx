@@ -20,7 +20,7 @@ export default function VetsyncBubble() {
   }, []);
 
   return (
-    <div ref={ref} className="mb-20 xs:mb-24 xl:mb-32 2xl:mb-40 mt-4 lg:mt-auto relative flex justify-center">
+    <div ref={ref} className="mb-8 sm:mb-12 xl:mb-14 mt-4 lg:mt-auto relative flex justify-center">
       <motion.img
         className="w-[68vw] sm:w-[54vw] lg:w-[33vw] 2xl:w-[34.5rem] max-w-[34.5rem] scale-100 absolute"
         initial={{ x: "10rem", scale: 1, opacity: 0 }}

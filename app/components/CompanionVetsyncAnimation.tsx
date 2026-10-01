@@ -8,7 +8,7 @@ export default function CompanionVetsyncAnimation() {
   const isInView = useInView(ref, { once: true });
 
   return (
-    <div ref={ref} className="w-8 sm:w-10 lg:w-14 mt-auto mb-16 xl:mb-24 2xl:mb-32 relative">
+    <div ref={ref} className="w-8 sm:w-10 lg:w-14 mt-auto mb-8 sm:mb-12 xl:mb-14 relative">
       <motion.img
         className="w-24 scale-150 absolute rotate-[-20deg] translate-x-1"
         initial={{ x: "6rem", rotate: "-20deg", scale: 1.5, opacity: 0 }}

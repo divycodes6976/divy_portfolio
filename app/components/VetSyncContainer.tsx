@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "motion/react";
 import { useHoverStore } from "../providers/counter-store-provider";
 
@@ -25,12 +26,19 @@ export default function VetSyncContainer() {
 
   return (
     <motion.div className="w-full lg:w-[60%] relative border-2 border-foreground overflow-hidden" onMouseEnter={() => setIsHovered("vetsync")} onMouseLeave={() => setIsHovered("none")}>
-      <Link target="_blank" href="https://medi-queue-seven-lime.vercel.app/display" className="block relative w-full h-full aspect-video">
+      <Link target="_blank" href="https://medi-queue-seven-lime.vercel.app/display" className="block relative w-full h-full">
+        <Image
+          className={`w-full select-none relative z-20 transition-all duration-300 ${
+            isHovered === "vetsync" ? "opacity-0 saturate-100" : "opacity-100 saturate-0"
+          }`}
+          src="/images/mediqueue.png"
+          width={1024}
+          height={499}
+          alt="MediQueue — Smart Hospital OPD Queue"
+        />
         <video
           ref={videoRef}
-          className={`w-full h-full object-cover select-none transition-all duration-300 ${
-            isHovered === "vetsync" ? "saturate-100" : "saturate-0"
-          }`}
+          className="absolute inset-0 z-10 w-full h-full object-cover select-none"
           src="/videos/mediqueue.mp4"
           autoPlay
           loop
