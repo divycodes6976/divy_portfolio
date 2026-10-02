@@ -9,7 +9,7 @@ export default function SocialsContainer() {
   const [isHovered, setIsHovered] = useState<string>("none");
 
   return (
-    <div className="w-full flex-1 mx-auto my-auto flex flex-row items-center justify-center gap-3 sm:gap-4 md:gap-5 lg:gap-4 xl:gap-5 text-4xl sm:text-5xl lg:text-5xl xl:text-6xl pt-7 pb-2 px-2">
+    <div className="w-full flex-1 mx-auto my-auto flex flex-row items-center justify-center gap-2 xs:gap-3 sm:gap-4 md:gap-5 lg:gap-4 xl:gap-5 text-2xl xs:text-3xl sm:text-5xl lg:text-5xl xl:text-6xl pt-2 sm:pt-7 pb-1 sm:pb-2 px-1 sm:px-2">
       <Link className="relative z-20" target="_blank" href="mailto:divyprakashpandey6@gmail.com">
         <div className="relative flex flex-col items-center justify-center cursor-pointer">
           <motion.div initial={{ rotate: 10, y: 0 }} whileHover={{ rotate: 0, y: -6 }} onHoverStart={() => setIsHovered("email")} onHoverEnd={() => setIsHovered("none")}>

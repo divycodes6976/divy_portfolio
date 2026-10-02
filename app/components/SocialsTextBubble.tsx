@@ -20,7 +20,7 @@ export default function SocialsTextBubble() {
   }, []);
 
   return (
-    <div ref={ref} className="w-24 xxs:w-36 h-[9rem] xxs:h-[11rem] sm:h-[12rem] xl:h-[15rem] 2xl:h-[17rem] mt-auto relative">
+    <div ref={ref} className="w-24 xxs:w-36 h-[7rem] xxs:h-[8rem] sm:h-[12rem] xl:h-[15rem] 2xl:h-[17rem] mt-auto relative">
       <motion.img
         className="w-36 scale-150 absolute"
         initial={{ x: "-5rem", scale: 0, opacity: 0 }}

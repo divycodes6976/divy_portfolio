@@ -57,7 +57,7 @@ export default function Home() {
               </div>
             </div>
             <PicContainer />
-            <div className="lg:w-[25%] col-span-3 sm:col-span-1 row-span-3 flex flex-row lg:flex-col-reverse 2xl:flex-row border-2 border-foreground overflow-hidden">
+            <div className="lg:w-[25%] col-span-3 sm:col-span-1 row-span-3 flex flex-col-reverse border-2 border-foreground overflow-hidden">
               <div className="flex">
                 <CompanionAnimation />
                 <SocialsTextBubble />
